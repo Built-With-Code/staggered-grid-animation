@@ -29,29 +29,31 @@ export default function Home() {
   };
 
   return (
-    <div className="grid grid-cols-10 grid-rows-10 w-full max-w-[50vw] aspect-square p-8 gap-2 sm:gap-3 sm:p-20 mx-auto">
-      {[...Array(GRID_SIZE ** 2)].map((_, idx) => {
-        const row = Math.floor(idx / GRID_SIZE);
-        const col = idx % GRID_SIZE;
-        const delay =
-          getDistance(row, col) * BASE_DELAY + Math.random() * NOISE;
-        const isOrigin = getDistance(row, col) === 0;
+    <div className="flex min-h-screen justify-center items-center p-8">
+      <div className="grid grid-cols-10 grid-rows-10 w-full max-w-[50vw] aspect-square gap-2 sm:gap-3">
+        {[...Array(GRID_SIZE ** 2)].map((_, idx) => {
+          const row = Math.floor(idx / GRID_SIZE);
+          const col = idx % GRID_SIZE;
+          const delay =
+            getDistance(row, col) * BASE_DELAY + Math.random() * NOISE;
+          const isOrigin = getDistance(row, col) === 0;
 
-        return (
-          <motion.div
-            className="bg-neutral-500 rounded-sm"
-            key={idx}
-            style={{ backgroundColor: isOrigin ? "purple" : "" }}
-            initial={{ opacity: isOrigin ? 1 : 0, scale: isOrigin ? 1 : 0.3 }}
-            animate={{ opacity: 0.8, scale: 1 }}
-            transition={{
-              type: "spring",
-              bounce: 0.5,
-              delay: delay,
-            }}
-          />
-        );
-      })}
+          return (
+            <motion.div
+              className="bg-neutral-500 rounded-sm"
+              key={idx}
+              style={{ backgroundColor: isOrigin ? "purple" : "" }}
+              initial={{ opacity: isOrigin ? 1 : 0, scale: isOrigin ? 1 : 0.3 }}
+              animate={{ opacity: 0.8, scale: 1 }}
+              transition={{
+                type: "spring",
+                bounce: 0.5,
+                delay: delay,
+              }}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
