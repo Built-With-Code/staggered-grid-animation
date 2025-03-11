@@ -42,7 +42,7 @@ export default function Home() {
             <motion.div
               className="bg-neutral-500 rounded-sm"
               key={idx}
-              style={{ backgroundColor: isOrigin ? "purple" : "" }}
+              style={{ backgroundColor: isOrigin ? "orange" : "" }}
               initial={{ opacity: isOrigin ? 1 : 0, scale: isOrigin ? 1 : 0.3 }}
               animate={{ opacity: 0.8, scale: 1 }}
               transition={{
